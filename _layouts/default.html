@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Roman Likhadievski">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicons: multiple formats for broad browser & device support -->
+    <link rel="icon" type="image/x-icon" href="{{"/content/favicon.ico"}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{"/content/apple-touch-icon.png"}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{"/content/favicon-32x32.png"}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{"/content/favicon-16x16.png"}}">
+    <link rel="shortcut icon" href="{{"/content/favicon.ico"}}" type="image/x-icon">
+    <link rel="manifest" href="{{"/content/site.webmanifest"}}">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    <header>
+      <div class="navigation-button"></div>
+    </header>
+    <main>
+      <div class="content">
+      {{ content }}
+      </div>
+    </main>
+    {% include sidebar.html %}
+    <footer>
+      
+    </footer>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const codeBlocks = document.querySelectorAll('pre.highlight');
+
+        codeBlocks.forEach(function(codeBlock) {
+          const copyButton = document.createElement('button');
+          copyButton.className = 'copy-button';
+          copyButton.type = 'button';
+          copyButton.innerText = 'Copy';
+
+          copyButton.addEventListener('click', function() {
+            const code = codeBlock.querySelector('code').innerText;
+            navigator.clipboard.writeText(code).then(function() {
+              copyButton.innerText = 'Copied!';
+              setTimeout(function() {
+                copyButton.innerText = 'Copy';
+              }, 2000);
+            }, function(err) {
+              console.error('Could not copy text: ', err);
+            });
+          });
+
+          codeBlock.appendChild(copyButton);
+        });
+
+        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        headings.forEach(function(heading) {
+          if (heading.id) {
+            const anchor = document.createElement('a');
+            anchor.className = 'header-anchor';
+            anchor.href = '#' + heading.id;
+            anchor.innerHTML = '¶';
+            heading.appendChild(anchor);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

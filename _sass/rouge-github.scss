@@ -1,0 +1,134 @@
+@import "fonts";
+
+:root {
+  --text-color:     #f8f8f8; /* main text color */
+  --keyword-color:  #f0835b; /* if, else, for, class, return, etc. */
+  --comment-color:  #bbbbbb; /* // */
+  --number-color:   #349ff5; /* 123, 0.456, 0xFF */
+  --object-color:   #79bfff; /* Class names, struct, enum, method/function names */
+  --string-color:   #46b22a; /* "strings", 'c', regex literals, etc. */
+  --function-color: #dcdcaa; /* function names */
+}
+
+.highlight table td { 
+  padding: 5px; 
+}
+.highlight table pre { 
+  margin: 0; 
+}
+
+.language-plaintext {
+  background-color: #432614;
+  color: #ff6e14;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 1px 5px 2px 5px;
+}
+
+/* ──────────────────────────────────────────────
+   COMMENTS
+   ────────────────────────────────────────────── */
+.highlight .c,   /* comment */
+.highlight .cd,  /* comment.doctype */
+.highlight .cm,  /* comment.multiline */
+.highlight .cp,  /* comment.preproc */
+.highlight .c1,  /* comment.single */
+.highlight .cs   /* comment.special */
+{
+  color: var(--comment-color);
+}
+
+/* ──────────────────────────────────────────────
+   ERRORS & DIFF
+   ────────────────────────────────────────────── */
+.highlight .err { color: #ff5555; background-color: #ffdddd; }
+.highlight .gd  { color: #ffffff; background-color: #ff5555; } /* deleted */
+.highlight .gi  { color: #ffffff; background-color: #55ff55; } /* inserted */
+.highlight .gr  { color: #ff5555; } /* error */
+.highlight .gt  { color: #ff5555; } /* trace */
+.highlight .gh  { color: var(--comment-color); }
+.highlight .gu  { color: var(--comment-color); }
+.highlight .go  { color: var(--comment-color); }
+.highlight .gp  { color: var(--comment-color); }
+
+/* ──────────────────────────────────────────────
+   KEYWORDS (if, return, class, async, etc.)
+   ────────────────────────────────────────────── */
+.highlight .k,   /* keyword */
+.highlight .kc,  /* keyword.constant */
+.highlight .kd,  /* keyword.declaration */
+.highlight .kn,  /* keyword.namespace */
+.highlight .kp,  /* keyword.pseudo */
+.highlight .kr,  /* keyword.reserved */
+.highlight .kt,  /* keyword.type */
+.highlight .kv,  /* keyword.variable */
+.highlight .ow   /* operator.word (and, or, in, etc.) */
+{
+  color: var(--keyword-color);
+}
+
+/* ──────────────────────────────────────────────
+   NUMBERS & LITERALS
+   ────────────────────────────────────────────── */
+.highlight .m,   /* literal.number */
+.highlight .mb, .mf, .mh, .mi, .il, .mo, .mx
+{
+  color: var(--number-color);
+}
+
+/* ──────────────────────────────────────────────
+   STRINGS & REGEX
+   ────────────────────────────────────────────── */
+.highlight .s,   /* string */
+.highlight .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss
+{
+  color: var(--string-color);
+}
+
+/* ──────────────────────────────────────────────
+   NAMES (classes, functions, variables, etc.)
+   ────────────────────────────────────────────── */
+.highlight .n { color: var(--object-color); } /* name */
+.highlight .na { color: var(--object-color); } /* name */
+.highlight .nc { color: var(--object-color); } /* name.class */
+.highlight .nf { color: var(--function-color); } /* name.function */
+.highlight .nt { color: var(--object-color); } /* name.tag (HTML/XML) */
+.highlight .nn { color: var(--object-color); } /* name.namespace */
+
+/* Variables, parameters, constants */
+.highlight .nb,  /* name.builtin */
+.highlight .no,  /* name.constant */
+.highlight .nv,  /* name.variable */
+.highlight .vc,  /* name.variable.class */
+.highlight .vg,  /* name.variable.global */
+.highlight .vi   /* name.variable.instance */
+{
+  color: var(--object-color);
+}
+
+/* ──────────────────────────────────────────────
+   OPERATORS & PUNCTUATION
+   ────────────────────────────────────────────── */
+.highlight .o,   /* operator */
+.highlight .p    /* punctuation (falls back to text) */
+{
+  color: var(--text-color);
+}
+
+/* ──────────────────────────────────────────────
+   MISC / FALLBACK
+   ────────────────────────────────────────────── */
+.highlight .w  { color: var(--text-color); }      /* whitespace/text */
+.highlight .bp { color: var(--keyword-color); }   /* name.builtin.pseudo (self, super) */
+.highlight .nd { color: var(--keyword-color); }   /* name.decorator */
+.highlight .ne { color: var(--keyword-color); }   /* name.exception */
+.highlight .ni { color: var(--object-color); }    /* name.entity */
+.highlight .nl { color: var(--object-color); }    /* name.label */
+
+/* Background */
+.highlight {
+  position: relative;
+  background-color: #141414;
+  color: var(--text-color); /* ensures plain text is readable */
+}

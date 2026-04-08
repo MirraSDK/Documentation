@@ -1,0 +1,262 @@
+@import "fonts";
+@import "rouge-github";
+
+:root {
+  --font-normal: "Inter",            /* your web font */
+                ui-sans-serif,      /* iOS/macOS 15+ native */
+                -apple-system,      /* older iOS/macOS */
+                BlinkMacSystemFont, /* Chrome on macOS */
+                "Segoe UI",         /* Windows 10/11 */
+                Roboto,             /* Android / Chrome OS */
+                "Helvetica Neue",   /* very old macOS fallback */
+                Helvetica,          /* even older */
+                Arial,              /* universal, last-resort */
+                system-ui,          /* catches everything else (Linux, etc.) */
+                sans-serif;
+  --font-serif: "Source Serif 4",    /* your web font */
+                "Source Serif Pro",  /* older Google Fonts name, still on some systems */
+                ui-serif,            /* iOS/macOS native serif */
+                Georgia,             /* Windows + macOS classic */
+                "Times New Roman",   /* universal but uglier */
+                Cambria,             /* Windows 10/11 premium serif */
+                serif;
+  --font-mono: "IBM Plex Mono",      /* your web font */
+               "Menlo",              /* macOS/iOS */
+               "DejaVu Sans Mono",   /* Linux default */
+               "Consolas",           /* Windows */
+               "Liberation Mono",    /* older Linux */
+               "Courier New",        /* universal */
+               ui-monospace,         /* iOS/macOS 15+ native */
+               monospace;
+  --min-content-width: 200px;
+  --max-content-width: 1000px;
+  --content-padding: 20px;
+  --header-height: 60px;
+  --background-color: #141414;
+  --border-color: #252525;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120,120,120,0.5) transparent;
+  font-weight: normal;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-normal);
+  font-size: 16px;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  margin-top: var(--header-height);
+}
+
+main .content {
+  min-width: var(--min-content-width);
+  max-width: var(--max-content-width);
+  flex-grow: 1;
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+  box-sizing: border-box;
+}
+
+header > .navigation-button {
+  width: 48px;
+  height: 48px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 5px;
+  background-color: transparent;
+  background-image: url('/assets/img/menu256x256.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 60px;
+  background: rgba(20, 20, 20, 0.9);
+  z-index: 1000;
+  height: 100%;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.invisible {
+  display: none;
+}
+
+header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  box-sizing: border-box;
+  z-index: 1000;
+  /* Background blur */
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+footer {
+  display: flex;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #8a8a8a;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.sidebar nav a:hover {
+  color: #ffffff;
+}
+.sidebar nav a.active {
+  color: #ffffff;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+pre {
+  padding: 10px;
+  padding-top: 40px;
+  background: var(--background-color);
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font-normal);
+  padding: 3px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  margin: 30px 0 5px 0;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+p {
+  line-height: 28px;
+  padding-bottom: 10px;
+}
+
+blockquote {
+  border-left:1px solid #e5e5e5;
+  margin:0;
+  padding:0 0 0 20px;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+th, td {
+  text-align:left;
+  padding:5px 10px;
+  border-bottom:1px solid #e5e5e5;
+}
+
+dt {
+  color:#444;
+}
+
+th {
+  color:#444;
+}
+
+img {
+  max-width:100%;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+strong {
+  color:#222;
+}
+
+small {
+  font-size:11px;
+}
+
+hr {
+  border:0;
+  background:#e5e5e5;
+  height:1px;
+  margin:0 0 20px;
+}
+
+@media print, screen and (max-width: 720px) {
+
+  
+
+}

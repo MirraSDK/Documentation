@@ -1,0 +1,5 @@
+title: Roman Lee シ
+theme: jekyll-theme-minimal
+permalink: /:title/
+gems:
+  - jekyll-redirect-from

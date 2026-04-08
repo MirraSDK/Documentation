@@ -1,0 +1,92 @@
+<div class="sidebar">
+  <nav>
+    {% assign sorted = site.html_pages | sort: 'nav_order' %}
+    {% for node in sorted %}
+      {% if node.nav_order and node.nav_order != -1 and node.title %}
+        {% if page.nav_group and node.nav_group != page.nav_group %}
+          {% continue %}
+        {% endif %}
+        <a href="{{ node.url | relative_url }}" class="{% if page.url == node.url %}active{% endif %}">{{ node.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+</div>
+<script>
+const sidebar = document.querySelector('.sidebar');
+const content = document.querySelector('.content');
+const toggleBtn = document.querySelector('.navigation-button'); // your toggle button
+const closeBtn = document.querySelector('.sidebar-close-button');   // optional close button
+
+let isSidebarOpen = false;
+
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    openSidebar();
+  });
+}
+
+if (closeBtn)  {
+  closeBtn.addEventListener('click', () => {
+    closeSidebar();
+  });
+}
+
+function openSidebar()  { 
+  isSidebarOpen = true;
+  updateSidebar(); 
+}
+
+function closeSidebar() { 
+  isSidebarOpen = false;
+  updateSidebar();
+}
+
+function isWideScreen() {
+  const sidebarWidth = sidebar.clientWidth;
+  const contentWidth = content.clientWidth;
+  return window.innerWidth >= (sidebarWidth * 2 + contentWidth);
+}
+
+function showSidebar() {
+  sidebar.classList.add('active');
+}
+
+function hideSidebar() {
+  if(sidebar.classList.contains('active')) {
+    sidebar.classList.remove('active');
+  }
+}
+
+function showSidebarButton() {
+  if(toggleBtn) {
+    toggleBtn.style.display = 'block';
+  }
+}
+
+function hideSidebarButton() {
+  if(toggleBtn) {
+    toggleBtn.style.display = 'none';
+  }
+}
+
+function updateSidebar() {
+  if(isSidebarOpen) {
+    showSidebar();
+    hideSidebarButton();
+  }
+  else if(isWideScreen()) {
+    showSidebar();
+    hideSidebarButton();
+  } else {
+    hideSidebar();
+    showSidebarButton();
+  }
+}
+
+window.addEventListener('resize', () => {
+  updateSidebar();
+});
+window.addEventListener('load', () => {
+  updateSidebar();
+});
+</script>
