@@ -94,6 +94,23 @@ MirraSDK.Ads.InvokeInterstitial(
 );
 ```
 
+### Preroll
+
+Some platforms, GameDistribution among them, require a preroll: the first interstitial ad, shown before the player starts playing.\
+Show it once from the button that starts the game after loading, such as Play or Start. Not on load, and not without a click.\
+The SDK waits up to 5 seconds for the platform to get ready. If it does not, the ad is skipped and `onClose` gets `false`.\
+Disable the button after the first click: a second ad request while one is pending closes at once with `false`.\
+Start the game in `onClose`, whatever `isSuccess` is:
+
+```csharp
+public void OnPlayButtonClicked() {
+    playButton.interactable = false;
+    MirraSDK.Ads.InvokeInterstitial(
+        onClose: (isSuccess) => StartGame()
+    );
+}
+```
+
 ## Rewarded Ads
 
 Check if a rewarded ad is ready to be shown:
