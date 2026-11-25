@@ -14,7 +14,7 @@ Version 2.0.0 works with RuStore Pay 11.2.0, Review 10.5.2 and Core 10.5.1, inst
 ### Requirements
 
 1. Unity 2022.3.38 or newer.
-2. MirraSDK5 5.2.5 or newer.
+2. MirraSDK5 5.2.6 or newer.
 3. External Dependency Manager for Unity (`com.google.external-dependency-manager`). It adds the RuStore Android libraries to the build.
 4. `Player Settings > Android > Other Settings > Minimum API Level` 24 or higher.
 5. `Application Entry Point` set to `Activity`. RuStore payments do not work with `GameActivity`.
@@ -122,7 +122,7 @@ An Android build of the `RuStore` configuration stops with a numbered report whi
 | Report | Fix |
 | --- | --- |
 | A RuStore package is not installed or is older than needed | Press the install or update button on the Toolkit card. |
-| MirraSDK5 is older than 5.2.5 | Update MirraSDK5, then press `Install dependencies of RuStore API for MirraSDK5` on the card. |
+| MirraSDK5 is older than 5.2.6 | Update MirraSDK5, then press `Install dependencies of RuStore API for MirraSDK5` on the card. |
 | External Dependency Manager is not installed | Install `com.google.external-dependency-manager` and run `Force Resolve`. |
 | Minimum API Level is below 24 | Raise it in Player Settings. |
 | Application Entry Point is not Activity | Run `Fix setup`. |
@@ -135,7 +135,7 @@ An Android build of the `RuStore` configuration stops with a numbered report whi
 
 Version 1.x bundled RuStore 10.0.x packages. Their Android libraries were hosted on a server that RuStore has shut down, so those builds no longer resolve.
 
-1. Update MirraSDK5 to 5.2.5 or newer.
+1. Update MirraSDK5 to 5.2.6 or newer.
 2. In the Toolkit package list select `RuStore API for MirraSDK5` and press the update button. It replaces the old RuStore packages with the current ones.
 3. Run `MirraSDK5 > RuStore > Fix setup`. It deletes `Assets/Plugins/Android/RuStoreIntentFilterActivity.java`, removes the old launcher activity from the manifest and gives the launcher back to the game activity, adds the RuStore Pay 11 entries, and asks External Dependency Manager to resolve again. The previous manifest is saved to `Library/MirraSDK/RuStore/AndroidManifest.backup.xml`.
 4. Check that `Console Application Id` and `Deeplink Scheme` are still filled in `Window > RuStoreSDK > Settings > PayClient`.
@@ -151,6 +151,7 @@ A Toolkit older than 5.2.5 installs only the package without the RuStore package
 1. Gradle reports `resource string/rustore_PayClientSettings_... not found` on Unity 2022.3. The folder `Assets/Plugins/Android/RuStoreSDKSettings.androidlib` was deleted while the editor was open. Run `Fix setup` or restart the editor, then build again.
 2. Gradle reports `Could not resolve ru.rustore.sdk`. Run `Assets > External Dependency Manager > Android Resolver > Force Resolve`. If a template in `Assets/Plugins/Android` still mentions `artifactory-external.vkpartner.ru`, delete that line.
 3. Payments are unavailable on the device. Check that the package name matches the app in RuStore Console, that `Console Application Id` belongs to this app, and that monetization is enabled for it.
+4. The game never leaves startup and the log ends with `Waiting for [IPlayer]`. MirraSDK5 5.2.5 and older lose the ready signal of the RuStore player account when it is the last module to finish. Update MirraSDK5 to 5.2.6.
 
 ### Not Supported
 

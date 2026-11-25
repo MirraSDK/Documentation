@@ -14,7 +14,7 @@ permalink: /ru/unity/mirrasdk/rustore
 ### Требования
 
 1. Unity 2022.3.38 или новее.
-2. MirraSDK5 5.2.5 или новее.
+2. MirraSDK5 5.2.6 или новее.
 3. External Dependency Manager for Unity (`com.google.external-dependency-manager`). Он добавляет Android-библиотеки RuStore в сборку.
 4. `Player Settings > Android > Other Settings > Minimum API Level` не ниже 24.
 5. `Application Entry Point` в значении `Activity`. С `GameActivity` платежи RuStore не работают.
@@ -122,7 +122,7 @@ Android-сборка конфигурации `RuStore` останавливае
 | Отчет | Что сделать |
 | --- | --- |
 | Пакет RuStore не установлен или старее нужного | Нажмите кнопку установки или обновления на карточке в Toolkit. |
-| MirraSDK5 старее 5.2.5 | Обновите MirraSDK5, затем нажмите `Install dependencies of RuStore API for MirraSDK5` на карточке. |
+| MirraSDK5 старее 5.2.6 | Обновите MirraSDK5, затем нажмите `Install dependencies of RuStore API for MirraSDK5` на карточке. |
 | Не установлен External Dependency Manager | Установите `com.google.external-dependency-manager` и выполните `Force Resolve`. |
 | Minimum API Level ниже 24 | Поднимите его в Player Settings. |
 | Application Entry Point не Activity | Выполните `Fix setup`. |
@@ -135,7 +135,7 @@ Android-сборка конфигурации `RuStore` останавливае
 
 Версия 1.x включала пакеты RuStore 10.0.x. Их Android-библиотеки лежали на сервере, который RuStore отключил, поэтому такие сборки больше не собираются.
 
-1. Обновите MirraSDK5 до 5.2.5 или новее.
+1. Обновите MirraSDK5 до 5.2.6 или новее.
 2. В списке пакетов Toolkit выберите `RuStore API for MirraSDK5` и нажмите кнопку обновления. Она заменит старые пакеты RuStore на актуальные.
 3. Выполните `MirraSDK5 > RuStore > Fix setup`. Команда удаляет `Assets/Plugins/Android/RuStoreIntentFilterActivity.java`, убирает из манифеста старую стартовую активность и возвращает запуск игровой активности, добавляет записи RuStore Pay 11 и просит External Dependency Manager заново разрешить зависимости. Прежний манифест сохраняется в `Library/MirraSDK/RuStore/AndroidManifest.backup.xml`.
 4. Проверьте, что `Console Application Id` и `Deeplink Scheme` по-прежнему заполнены в `Window > RuStoreSDK > Settings > PayClient`.
@@ -151,6 +151,7 @@ Toolkit старее 5.2.5 устанавливает только сам пак
 1. Gradle сообщает `resource string/rustore_PayClientSettings_... not found` в Unity 2022.3. Папка `Assets/Plugins/Android/RuStoreSDKSettings.androidlib` была удалена при открытом редакторе. Выполните `Fix setup` или перезапустите редактор и соберите снова.
 2. Gradle сообщает `Could not resolve ru.rustore.sdk`. Выполните `Assets > External Dependency Manager > Android Resolver > Force Resolve`. Если шаблон в `Assets/Plugins/Android` все еще упоминает `artifactory-external.vkpartner.ru`, удалите эту строку.
 3. Платежи недоступны на устройстве. Проверьте, что имя пакета совпадает с приложением в RuStore Консоли, что `Console Application Id` относится к этому приложению и что для него включена монетизация.
+4. Игра не выходит из загрузки, а лог заканчивается строкой `Waiting for [IPlayer]`. MirraSDK5 5.2.5 и старее теряет сигнал готовности аккаунта игрока RuStore, когда он завершает загрузку последним. Обновите MirraSDK5 до 5.2.6.
 
 ### Не поддерживается
 
