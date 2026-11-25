@@ -31,3 +31,7 @@ MirraSDK.WaitForProviders(() => {
     // MirraSDK is initialized.
 });
 ```
+
+The callback runs once, as soon as every component is ready, in whatever order they finish. If MirraSDK is already initialized, it runs at once.
+
+If a component is still not ready 15 seconds after startup, MirraSDK logs one warning that names it, for example `Still waiting for [IPlayerAccount]`, and keeps waiting. The callback runs as soon as that component is ready.
